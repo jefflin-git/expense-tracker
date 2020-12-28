@@ -1,0 +1,56 @@
+{
+  "records": [
+    {
+      "name": "盥洗用具",
+      "category": "家居物業",
+      "date": "2020-12-28",
+      "amount": 100
+    },
+    {
+      "name": "油錢",
+      "category": "交通出行",
+      "date": "2020-12-28",
+      "amount": 30
+    },
+    {
+      "name": "運動中心門票",
+      "category": "休閒娛樂",
+      "date": "2020 - 12 - 28",
+      "amount": 50
+    },
+    {
+      "name": "午餐",
+      "category": "餐飲食品",
+      "date": "2020 - 12 - 28",
+      "amount": 60
+    },
+    {
+      "name": "停車費",
+      "category": "其他",
+      "date": "2020 - 12 - 28",
+      "amount": 40
+    }
+  ],
+  "categories": [
+    {
+      "title": "家居物業",
+      "icon": "fas fa-home"
+    },
+    {
+      "title": "交通出行",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "title": "休閒娛樂",
+      "icon": "fas fa-grin-beam"
+    },
+    {
+      "title": "餐飲食品",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "title": "其他",
+      "icon": "fas fa-hand-holding-usd"
+    }
+  ]
+}
