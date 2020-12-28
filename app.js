@@ -8,6 +8,8 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 //載入method-override
 const methodOverride = require('method-override')
+//引用mongoose.js
+require('./config/mongoose')
 
 //設定express-handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
