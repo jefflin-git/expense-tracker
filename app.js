@@ -38,16 +38,28 @@ app.use(methodOverride('_method'))
 
 app.get('/', async (req, res) => {
   const categories = await Category.find().lean()
+  const option = req.query.category
   let totalAmount = 0
   Record.find()
     .lean()
     .then(records => {
       records.forEach(record => record.icon = categories.find(category => category.title === record.category))
-      records.forEach(record => totalAmount += record.amount)
-      res.render('index', { records, totalAmount })
+
+      if (option) {
+        if (option === '顯示全部') {
+          records.forEach(record => totalAmount += record.amount)
+          res.render('index', { records, totalAmount, option })
+        } else {
+          selectRecord = records.filter(record => record.category === option)
+          selectRecord.forEach(record => totalAmount += record.amount)
+          res.render('index', { records: selectRecord, totalAmount, option })
+        }
+      } else {
+        records.forEach(record => totalAmount += record.amount)
+        res.render('index', { records, totalAmount, option })
+      }
     })
     .catch(error => console.log(error))
-
 })
 app.get('/new', (req, res) => {
   res.render('new')
