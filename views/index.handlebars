@@ -2,13 +2,13 @@
   <div class="col-4" style="margin: 0 auto;">
     <form action="/" method="GET">
       <select class="form-control" name="category" onchange="this.form.submit()">
-        <option>類別選擇</option>
-        <option value="顯示全部" {{#ifEquals option.category '顯示全部' }}selected{{/ifEquals}}>顯示全部類別</option>
-        <option value="家居物業" {{#ifEquals option.category '家居物業' }}selected{{/ifEquals}}>家居物業</option>
-        <option value="交通出行" {{#ifEquals option.category '交通出行' }}selected{{/ifEquals}}>交通出行</option>
-        <option value="休閒娛樂" {{#ifEquals option.category '休閒娛樂' }}selected{{/ifEquals}}>休閒娛樂</option>
-        <option value="餐飲食品" {{#ifEquals option.category '餐飲食品' }}selected{{/ifEquals}}>餐飲食品</option>
-        <option value="其他" {{#ifEquals option.category '其他' }}selected{{/ifEquals}}>其他</option>
+        <option disabled>類別選擇</option>
+        <option value="顯示全部" {{#ifEquals option '顯示全部' }}selected{{/ifEquals}}>顯示全部類別</option>
+        <option value="家居物業" {{#ifEquals option '家居物業' }}selected{{/ifEquals}}>家居物業</option>
+        <option value="交通出行" {{#ifEquals option '交通出行' }}selected{{/ifEquals}}>交通出行</option>
+        <option value="休閒娛樂" {{#ifEquals option '休閒娛樂' }}selected{{/ifEquals}}>休閒娛樂</option>
+        <option value="餐飲食品" {{#ifEquals option '餐飲食品' }}selected{{/ifEquals}}>餐飲食品</option>
+        <option value="其他" {{#ifEquals option '其他' }}selected{{/ifEquals}}>其他</option>
       </select>
     </form>
   </div>

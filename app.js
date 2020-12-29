@@ -46,18 +46,10 @@ app.get('/', async (req, res) => {
       records.forEach(record => record.icon = categories.find(category => category.title === record.category))
 
       if (option) {
-        if (option === '顯示全部') {
-          records.forEach(record => totalAmount += record.amount)
-          res.render('index', { records, totalAmount, option })
-        } else {
-          selectRecord = records.filter(record => record.category === option)
-          selectRecord.forEach(record => totalAmount += record.amount)
-          res.render('index', { records: selectRecord, totalAmount, option })
-        }
-      } else {
-        records.forEach(record => totalAmount += record.amount)
-        res.render('index', { records, totalAmount, option })
+        records = (option === '顯示全部') ? records : records.filter(record => record.category === option)
       }
+      records.forEach(record => totalAmount += record.amount)
+      res.render('index', { records, totalAmount, option })
     })
     .catch(error => console.log(error))
 })
