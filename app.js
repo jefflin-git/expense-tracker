@@ -37,21 +37,26 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.get('/', async (req, res) => {
-  const categories = await Category.find().lean()
-  const option = req.query.category
-  let totalAmount = 0
-  Record.find()
-    .lean()
-    .then(records => {
-      records.forEach(record => record.icon = categories.find(category => category.title === record.category))
+  try {
+    const categories = await Category.find().lean()
+    const records = await Record.find().lean()
+    let filterRecords = records
+    const option = req.query.category
+    let totalAmount = 0
 
-      if (option) {
-        records = (option === '顯示全部') ? records : records.filter(record => record.category === option)
-      }
-      records.forEach(record => totalAmount += record.amount)
-      res.render('index', { records, totalAmount, option })
-    })
-    .catch(error => console.log(error))
+    filterRecords.forEach(record => record.icon = categories.find(category => category.title === record.category))
+
+    if (option) {
+      filterRecords = (option === '顯示全部') ? records : records.filter(record => record.category === option)
+    }
+
+    filterRecords.forEach(record => totalAmount += record.amount)
+
+    res.render('index', { records: filterRecords, totalAmount, option })
+
+  } catch (err) {
+    console.error(err)
+  }
 })
 app.get('/new', (req, res) => {
   res.render('new')
@@ -61,6 +66,10 @@ app.get('/edit', (req, res) => {
   res.render('edit')
 })
 
+app.post('/new', (req, res) => {
+
+  res.render('edit')
+})
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT} at ${Date()}`)
 })
