@@ -1,0 +1,59 @@
+<div class="row mt-5">
+  <div class="col-4" style="margin: 0 auto;">
+    <form action="/" method="GET" onchange="submit()">
+      <select class="form-control" name="category">
+        <option value="all">顯示全部類別</option>
+        <option value="home">家居物業</option>
+        <option value="traffic">交通出行</option>
+        <option value="fun">休閒娛樂</option>
+        <option value="food">餐飲食品</option>
+        <option value="other">其他</option>
+      </select>
+    </form>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-4 d-flex justify-content-around" style="margin: 0 auto;">
+    <h3 class="mr-5 total-amount-title">總金額:</h3>
+    <h1 class="total-amount">{{totalAmount}}</h1>
+  </div>
+</div>
+</div>
+<div class="row mt-3">
+  <div class="col-4" style="margin: 0 auto;">
+    <ul class="list-group">
+      {{#each records}}
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex" style="width: 20vw; height: 10vh;">
+            <div class="icon">
+              <i class="{{this.icon.icon}}"></i>
+            </div>
+            <div>
+              <h2>{{this.name}}</h2>
+              <h5>{{this.date}}</h5>
+            </div>
+          </div>
+          <h3>{{this.amount}}</h3>
+          <div class="d-flex justify-content-between">
+            <a href="/edit">
+              <button type="button" class="btn btn-outline-dark mr-2">修改</button>
+            </a>
+            <form action="/delete?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-outline-dark">刪除</button>
+            </form>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-3 d-flex justify-content-center" style="margin: 0 auto;">
+    <a href="/new">
+      <button type="button" class="btn-send btn-lg">新增支出</button>
+    </a>
+  </div>
+</div>

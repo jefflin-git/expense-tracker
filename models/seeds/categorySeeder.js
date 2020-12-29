@@ -9,4 +9,5 @@ db.once('open', () => {
     Category.create(list)
   })
   console.log('category done!')
+  // process.exit()
 })

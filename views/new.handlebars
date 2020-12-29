@@ -1,0 +1,49 @@
+<div class="row mt-3">
+  <div class="col-4" style="margin: 0 auto;">
+    <div class="row">
+      <div class="col-2" style="text-align: right;">
+        <small>*必田欄位</small>
+      </div>
+      <div class="col-8">
+        <h2 style="text-align: center;">請輸入你的支出</h2>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="title col-sm-2 col-form-label">名稱*:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="title col-sm-2 col-form-label">日期*:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="date" name="date" placeholder="西元年-月-日" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="title col-sm-2 col-form-label">類別*:</label>
+      <div class="col-sm-8">
+        <select class="form-control" name="category" required>
+          <option value="home">家居物業</option>
+          <option value="traffic">交通出行</option>
+          <option value="fun">休閒娛樂</option>
+          <option value="food">餐飲食品</option>
+          <option value="other">其他</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="title col-sm-2 col-form-label">金額*:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="amount" name="amount" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center" style="margin: 0 auto;">
+        <form action="/new" method="POST">
+          <button type="submit" class="btn-send btn-lg">新增支出</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

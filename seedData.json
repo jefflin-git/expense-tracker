@@ -4,31 +4,36 @@
       "name": "盥洗用具",
       "category": "家居物業",
       "date": "2020-12-28",
-      "amount": 100
+      "amount": 100,
+      "icon": ""
     },
     {
       "name": "油錢",
       "category": "交通出行",
       "date": "2020-12-28",
-      "amount": 30
+      "amount": 30,
+      "icon": ""
     },
     {
       "name": "運動中心門票",
       "category": "休閒娛樂",
       "date": "2020 - 12 - 28",
-      "amount": 50
+      "amount": 50,
+      "icon": ""
     },
     {
       "name": "午餐",
       "category": "餐飲食品",
       "date": "2020 - 12 - 28",
-      "amount": 60
+      "amount": 60,
+      "icon": ""
     },
     {
       "name": "停車費",
       "category": "其他",
       "date": "2020 - 12 - 28",
-      "amount": 40
+      "amount": 40,
+      "icon": ""
     }
   ],
   "categories": [

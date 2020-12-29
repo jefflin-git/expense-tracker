@@ -11,6 +11,21 @@ const methodOverride = require('method-override')
 //引用mongoose.js
 require('./config/mongoose')
 
+const Record = require('./models/record')
+const Category = require('./models/category')
+const handlebars = require('handlebars')
+
+//載入static file
+app.use(express.static('public'))
+
+// register helper
+handlebars.registerHelper('ifEquals', function (job, targetJob, options) {
+  if (job === targetJob) {
+    return options.fn(this)
+  }
+  return options.inverse(this)
+})
+
 //設定express-handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -21,8 +36,25 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //設定method-override
 app.use(methodOverride('_method'))
 
-app.get('/', (req, res) => {
-  res.send('test')
+app.get('/', async (req, res) => {
+  const categories = await Category.find().lean()
+  let totalAmount = 0
+  Record.find()
+    .lean()
+    .then(records => {
+      records.forEach(record => record.icon = categories.find(category => category.title === record.category))
+      records.forEach(record => totalAmount += record.amount)
+      res.render('index', { records, totalAmount })
+    })
+    .catch(error => console.log(error))
+
+})
+app.get('/new', (req, res) => {
+  res.render('new')
+})
+
+app.get('/edit', (req, res) => {
+  res.render('edit')
 })
 
 app.listen(PORT, () => {
