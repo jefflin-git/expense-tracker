@@ -1,7 +1,8 @@
 // 載入 express 並建構應用程式伺服器
 const express = require('express')
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
+
 //載入express-handlebars
 const exphbs = require('express-handlebars')
 // 引用body-parser
