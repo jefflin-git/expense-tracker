@@ -40,9 +40,8 @@
             <a href="/record/edit/{{this._id}}">
               <button type="button" class="btn btn-outline-dark mr-2">修改</button>
             </a>
-            <form action="/record/delete/{{this._id}}?_method=DELETE" method="POST">
-              <button type="submit" class="btn btn-outline-dark">刪除</button>
-            </form>
+            <button type="submit" class="btn btn-outline-dark" data-toggle="modal"
+              data-target="#delete-modal-{{this._id}}">刪除</button>
           </div>
         </div>
       </li>
@@ -58,3 +57,24 @@
     </a>
   </div>
 </div>
+
+
+{{!-- delete modal --}}
+{{#each records}}
+<div class="modal fade" id="delete-modal-{{this._id}}" data-backdrop="static" tabindex="-1" data-keyboard="false"
+  aria-labelledby="delete-modal-{{this._id}}-Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        要刪除 <strong>{{this.name}}</strong> 嗎？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+        <form action="/record/delete/{{this._id}}?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger">確認刪除</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
