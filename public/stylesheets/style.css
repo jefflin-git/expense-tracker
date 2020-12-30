@@ -39,3 +39,53 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgb(255, 148, 109);
   border-radius: 5px;
 }
+
+@media (max-width: 960px) {
+  * {
+    font-size: 14px;
+  }
+
+  .total-amount {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 850px) {
+  * {
+    font-size: 12px;
+  }
+
+  .total-amount {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 790px) {
+  * {
+    font-size: 10px;
+  }
+
+  .total-amount {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 620px) {
+  * {
+    font-size: 8px;
+  }
+
+  .total-amount {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  * {
+    font-size: 6px;
+  }
+
+  .total-amount {
+    font-size: 40px;
+  }
+}
