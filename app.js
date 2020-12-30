@@ -95,6 +95,14 @@ app.put('/edit/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//刪除路由
+app.delete('/delete/:id', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT} at ${Date()}`)
