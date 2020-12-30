@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //設定method-override
 app.use(methodOverride('_method'))
 
+//閱覽清單路由
 app.get('/', async (req, res) => {
   try {
     const categories = await Category.find().lean()
@@ -58,18 +59,25 @@ app.get('/', async (req, res) => {
     console.error(err)
   }
 })
+
+//進入新增頁面路由
 app.get('/new', (req, res) => {
   res.render('new')
 })
 
+//進入編輯頁面路由
 app.get('/edit', (req, res) => {
   res.render('edit')
 })
 
+//新增支出路由
 app.post('/new', (req, res) => {
-
-  res.render('edit')
+  const newRecord = req.body
+  Record.create(newRecord)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
+
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT} at ${Date()}`)
 })
