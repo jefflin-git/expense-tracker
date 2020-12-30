@@ -66,9 +66,13 @@ app.get('/new', (req, res) => {
 })
 
 //進入編輯頁面路由
-app.get('/edit', (req, res) => {
-  res.render('edit')
+app.get('/edit/:id', (req, res) => {
+  const id = req.params.id
+  Record.findById(id).lean()
+    .then(record => res.render('edit', { record }))
+    .catch(error => console.log(error))
 })
+
 
 //新增支出路由
 app.post('/new', (req, res) => {
@@ -77,6 +81,20 @@ app.post('/new', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+//編輯支出路由
+app.put('/edit/:id', (req, res) => {
+  const id = req.params.id
+  const editRecord = req.body
+  Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, editRecord)
+      record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT} at ${Date()}`)
