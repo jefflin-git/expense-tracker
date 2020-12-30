@@ -10,7 +10,7 @@ const Category = require('../../models/category')
 router.get('/', async (req, res) => {
     try {
         const categories = await Category.find().lean()
-        const records = await Record.find().lean()
+        const records = await Record.find().lean().sort({ _id: 'desc' })
         let filterRecords = records
         const option = req.query.category
         let totalAmount = 0
