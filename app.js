@@ -16,6 +16,7 @@ const routes = require('./routes/index.js')
 //引入register helper模駔
 const helper = require('./helper')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 
 //載入static file
 app.use(express.static('public'))
@@ -35,6 +36,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+usePassport(app)
 
 //將傳入伺服器的request導入路由器
 app.use(routes)
