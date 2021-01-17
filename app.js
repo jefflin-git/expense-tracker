@@ -15,6 +15,7 @@ require('./config/mongoose')
 const routes = require('./routes/index.js')
 //引入register helper模駔
 const helper = require('./helper')
+const session = require('express-session')
 
 //載入static file
 app.use(express.static('public'))
@@ -28,6 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 //設定method-override
 app.use(methodOverride('_method'))
+
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 //將傳入伺服器的request導入路由器
 app.use(routes)
