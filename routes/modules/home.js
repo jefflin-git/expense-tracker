@@ -9,8 +9,9 @@ const Category = require('../../models/category')
 //閱覽清單路由
 router.get('/', async (req, res) => {
     try {
+        const userId = req.user._id
         const categories = await Category.find().lean()
-        const records = await Record.find().lean().sort({ _id: 'desc' })
+        const records = await Record.find({ userId }).lean().sort({ _id: 'desc' })
         let filterRecords = records
         const option = req.query.category
         let totalAmount = 0

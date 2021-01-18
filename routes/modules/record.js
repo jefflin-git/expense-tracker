@@ -12,8 +12,9 @@ router.get('/new', (req, res) => {
 
 //進入編輯頁面路由
 router.get('/edit/:id', (req, res) => {
-    const id = req.params.id
-    Record.findById(id).lean()
+    const userId = req.user._id
+    const _id = req.params.id
+    Record.findOne({ userId, _id }).lean()
         .then(record => res.render('edit', { record }))
         .catch(error => console.log(error))
 })
@@ -22,6 +23,7 @@ router.get('/edit/:id', (req, res) => {
 //新增支出路由
 router.post('/new', (req, res) => {
     const newRecord = req.body
+    newRecord.userId = req.user._id
     Record.create(newRecord)
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
@@ -29,9 +31,10 @@ router.post('/new', (req, res) => {
 
 //編輯支出路由
 router.put('/edit/:id', (req, res) => {
-    const id = req.params.id
+    const userId = req.user._id
+    const _id = req.params.id
     const editRecord = req.body
-    Record.findById(id)
+    Record.findOne({ userId, _id })
         .then(record => {
             record = Object.assign(record, editRecord)
             record.save()
@@ -42,8 +45,9 @@ router.put('/edit/:id', (req, res) => {
 
 //刪除路由
 router.delete('/delete/:id', (req, res) => {
-    const id = req.params.id
-    Record.findById(id)
+    const userId = req.user._id
+    const _id = req.params.id
+    Record.findOne({ userId, _id })
         .then(record => record.remove())
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
