@@ -18,6 +18,7 @@ const helper = require('./helper')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const locals = require('./middleware/locals')
+const flash = require('connect-flash')
 
 //載入static file
 app.use(express.static('public'))
@@ -39,6 +40,8 @@ app.use(session({
 }))
 
 usePassport(app)
+
+app.use(flash())
 
 locals(app)
 
