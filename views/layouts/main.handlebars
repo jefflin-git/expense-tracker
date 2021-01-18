@@ -19,7 +19,9 @@
     <a href="/">
       <span class="navbar-brand mb-0 h1">家庭記帳本</span>
     </a>
-
+    {{#if isAuthenticated}}
+    <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+    {{/if}}
   </nav>
   <main>
     {{{body}}}

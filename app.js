@@ -17,6 +17,7 @@ const routes = require('./routes/index.js')
 const helper = require('./helper')
 const session = require('express-session')
 const usePassport = require('./config/passport')
+const locals = require('./middleware/locals')
 
 //載入static file
 app.use(express.static('public'))
@@ -38,6 +39,8 @@ app.use(session({
 }))
 
 usePassport(app)
+
+locals(app)
 
 //將傳入伺服器的request導入路由器
 app.use(routes)
