@@ -1,7 +1,10 @@
 // 載入 express 並建構應用程式伺服器
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+const PORT = process.env.PORT
 
 //載入express-handlebars
 const exphbs = require('express-handlebars')
@@ -34,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
