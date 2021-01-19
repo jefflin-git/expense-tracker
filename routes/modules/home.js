@@ -13,18 +13,25 @@ router.get('/', async (req, res) => {
         const categories = await Category.find().lean()
         const records = await Record.find({ userId }).lean().sort({ _id: 'desc' })
         let filterRecords = records
-        const option = req.query.category
+        const categoryOption = req.query.category
+        const monthOption = req.query.month
         let totalAmount = 0
 
         filterRecords.forEach(record => record.icon = categories.find(category => category.title === record.category))
 
-        if (option) {
-            filterRecords = (option === '顯示全部') ? records : records.filter(record => record.category === option)
+        if (categoryOption) {
+            filterRecords = (categoryOption === '顯示全部') ? records : records.filter(record => record.category === categoryOption)
         }
 
-        filterRecords.forEach(record => totalAmount += record.amount)
+        if (monthOption) {
+            filterRecords = (monthOption === 'all') ? filterRecords : filterRecords.filter(record => Number(new Date(record.date).getMonth()) + 1 === Number(monthOption))
+        }
 
-        res.render('index', { records: filterRecords, totalAmount, option })
+        filterRecords.forEach(record => {
+            totalAmount += record.amount
+        })
+
+        res.render('index', { records: filterRecords, totalAmount, monthOption, categoryOption })
 
     } catch (err) {
         console.error(err)
