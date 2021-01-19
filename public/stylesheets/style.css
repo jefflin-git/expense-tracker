@@ -10,6 +10,10 @@ body {
  font-family: "Noto Sans TC", sans-serif;
 }
 
+.register-card, .login-card {
+  box-shadow: 0 4px 15px 5px rgba(0,0,0,0.08);
+}
+
 .total-amount {
   font-size: 100px;
   color: rgb(255, 148, 109);
