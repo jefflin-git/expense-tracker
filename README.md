@@ -6,7 +6,7 @@
 
 ![登入畫面](https://i.imgur.com/W2CxAZC.png)
 
-![網路記帳工具](https://i.imgur.com/QUgTf68.png)
+![首頁畫面](https://i.imgur.com/LVi89TQ.png)
 
 ## 功能描述 (features)
 - 提供登入和註冊機制
