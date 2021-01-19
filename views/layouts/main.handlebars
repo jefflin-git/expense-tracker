@@ -20,7 +20,10 @@
       <span class="navbar-brand mb-0 h1">家庭記帳本</span>
     </a>
     {{#if isAuthenticated}}
-    <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+    <div class="d-flex align-items-center">
+      <h5 style="color: white">登入者: {{user.name}}</h5>
+      <a href="/users/logout" class="btn btn-outline-light ml-3">Logout</a>
+    </div>
     {{/if}}
   </nav>
   <main>
