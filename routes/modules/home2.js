@@ -13,7 +13,6 @@ router.get('/', async (req, res) => {
     let monthSelect = req.query.month
     let monthSearch = `[0-9]{4}-${monthSelect}-[0-9]{2}`
     const userId = req.user._id
-    let totalAmount = 0
     const categories = await Category.find().lean()
 
     if (categorySelect === 'all' || categorySelect === undefined) {
@@ -33,15 +32,18 @@ router.get('/', async (req, res) => {
       ]
     }
 
-    Record.find(query)
-      .lean()
-      .then(records => {
-        records.forEach(record => {
-          totalAmount += record.amount
-          record.icon = categories.find(category => category.title === record.category)
-        })
-        res.render('index', { records, totalAmount, categorySelect, monthSelect })
-      })
+    const sumItems = await Record.aggregate([
+      { $match: query },
+      { $group: { _id: null, totalAmount: { $sum: "$amount" } } }
+    ])
+
+    const totalAmount = sumItems[0].totalAmount
+
+    const records = await Record.find(query).lean()
+    records.forEach(record => {
+      record.icon = categories.find(category => category.title === record.category)
+    })
+    res.render('index', { records, totalAmount, categorySelect, monthSelect })
   } catch (err) {
     console.error(err)
     res.render('error', { message: 'filter error !' })
