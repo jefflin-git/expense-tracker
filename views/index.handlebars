@@ -5,12 +5,12 @@
         <div class="col-5">
           <select class="form-control" name="category" onchange="this.form.submit()">
             <option disabled>類別選擇</option>
-            <option value="顯示全部" {{#ifEquals categoryOption '顯示全部' }}selected{{/ifEquals}}>顯示全部類別</option>
-            <option value="家居物業" {{#ifEquals categoryOption '家居物業' }}selected{{/ifEquals}}>家居物業</option>
-            <option value="交通出行" {{#ifEquals categoryOption '交通出行' }}selected{{/ifEquals}}>交通出行</option>
-            <option value="休閒娛樂" {{#ifEquals categoryOption '休閒娛樂' }}selected{{/ifEquals}}>休閒娛樂</option>
-            <option value="餐飲食品" {{#ifEquals categoryOption '餐飲食品' }}selected{{/ifEquals}}>餐飲食品</option>
-            <option value="其他" {{#ifEquals categoryOption '其他' }}selected{{/ifEquals}}>其他</option>
+            <option value="all" {{#ifEquals categorySelect 'all' }}selected{{/ifEquals}}>顯示全部類別</option>
+            <option value="家居物業" {{#ifEquals categorySelect '家居物業' }}selected{{/ifEquals}}>家居物業</option>
+            <option value="交通出行" {{#ifEquals categorySelect '交通出行' }}selected{{/ifEquals}}>交通出行</option>
+            <option value="休閒娛樂" {{#ifEquals categorySelect '休閒娛樂' }}selected{{/ifEquals}}>休閒娛樂</option>
+            <option value="餐飲食品" {{#ifEquals categorySelect '餐飲食品' }}selected{{/ifEquals}}>餐飲食品</option>
+            <option value="其他" {{#ifEquals categorySelect '其他' }}selected{{/ifEquals}}>其他</option>
           </select>
         </div>
         <div class="col-5">
@@ -24,18 +24,18 @@
 
             {{!-- 上面的程式不能記憶選項，因此採用手工 --}}
             <option value="all" {{#ifEquals monthOption 'all' }}selected{{/ifEquals}}>顯示全部月份</option>
-            <option value="1" {{#ifEquals monthOption '1' }}selected{{/ifEquals}}>1月份</option>
-            <option value="2" {{#ifEquals monthOption '2' }}selected{{/ifEquals}}>2月份</option>
-            <option value="3" {{#ifEquals monthOption '3' }}selected{{/ifEquals}}>3月份</option>
-            <option value="4" {{#ifEquals monthOption '4' }}selected{{/ifEquals}}>4月份</option>
-            <option value="5" {{#ifEquals monthOption '5' }}selected{{/ifEquals}}>5月份</option>
-            <option value="6" {{#ifEquals monthOption '6' }}selected{{/ifEquals}}>6月份</option>
-            <option value="7" {{#ifEquals monthOption '7' }}selected{{/ifEquals}}>7月份</option>
-            <option value="8" {{#ifEquals monthOption '8' }}selected{{/ifEquals}}>8月份</option>
-            <option value="9" {{#ifEquals monthOption '9' }}selected{{/ifEquals}}>9月份</option>
-            <option value="10" {{#ifEquals monthOption '10' }}selected{{/ifEquals}}>10月份</option>
-            <option value="11" {{#ifEquals monthOption '11' }}selected{{/ifEquals}}>11月份</option>
-            <option value="12" {{#ifEquals monthOption '12' }}selected{{/ifEquals}}>12月份</option>
+            <option value="1" {{#ifEquals monthSelect '1' }}selected{{/ifEquals}}>1月份</option>
+            <option value="2" {{#ifEquals monthSelect '2' }}selected{{/ifEquals}}>2月份</option>
+            <option value="3" {{#ifEquals monthSelect '3' }}selected{{/ifEquals}}>3月份</option>
+            <option value="4" {{#ifEquals monthSelect '4' }}selected{{/ifEquals}}>4月份</option>
+            <option value="5" {{#ifEquals monthSelect '5' }}selected{{/ifEquals}}>5月份</option>
+            <option value="6" {{#ifEquals monthSelect '6' }}selected{{/ifEquals}}>6月份</option>
+            <option value="7" {{#ifEquals monthSelect '7' }}selected{{/ifEquals}}>7月份</option>
+            <option value="8" {{#ifEquals monthSelect '8' }}selected{{/ifEquals}}>8月份</option>
+            <option value="9" {{#ifEquals monthSelect '9' }}selected{{/ifEquals}}>9月份</option>
+            <option value="10" {{#ifEquals monthSelect '10' }}selected{{/ifEquals}}>10月份</option>
+            <option value="11" {{#ifEquals monthSelect '11' }}selected{{/ifEquals}}>11月份</option>
+            <option value="12" {{#ifEquals monthSelect '12' }}selected{{/ifEquals}}>12月份</option>
           </select>
         </div>
       </div>

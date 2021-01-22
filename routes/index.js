@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 //引入home模組程式碼
-const home = require('./modules/home')
+const home = require('./modules/home2')
 //引入record模組程式碼
 const record = require('./modules/record')
 const users = require('./modules/users')
