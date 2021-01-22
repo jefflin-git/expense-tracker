@@ -16,7 +16,10 @@ router.get('/edit/:id', (req, res) => {
     const _id = req.params.id
     Record.findOne({ userId, _id }).lean()
         .then(record => res.render('edit', { record }))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('error', { message: 'edit error !' })
+        })
 })
 
 
@@ -26,7 +29,10 @@ router.post('/new', (req, res) => {
     newRecord.userId = req.user._id
     Record.create(newRecord)
         .then(() => res.redirect('/'))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('error', { message: 'add error !' })
+        })
 })
 
 //編輯支出路由
@@ -40,7 +46,10 @@ router.put('/edit/:id', (req, res) => {
             record.save()
         })
         .then(() => res.redirect('/'))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('error', { message: 'edit error !' })
+        })
 })
 
 //刪除路由
@@ -50,7 +59,10 @@ router.delete('/delete/:id', (req, res) => {
     Record.findOne({ userId, _id })
         .then(record => record.remove())
         .then(() => res.redirect('/'))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('error', { message: 'delete error !' })
+        })
 })
 
 //匯出路由器
